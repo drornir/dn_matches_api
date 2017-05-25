@@ -1,6 +1,8 @@
-package filters;
+package filters.operators;
 
 import data.Game;
+import filters.Filters;
+import filters.FiltersList;
 
 import java.util.List;
 
