@@ -1,7 +1,9 @@
 package data;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Dror Nir on 25/05/2017.
@@ -12,6 +14,11 @@ public class KeyValueGame implements Game{
     @Override
     public GameValue get(GameField fieldName) {
         return gameData.get(fieldName);
+    }
+
+    @Override
+    public Set<Map.Entry<GameField, GameValue>> getAll() {
+        return gameData.entrySet();
     }
 
     @Override

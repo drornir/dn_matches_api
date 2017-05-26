@@ -17,9 +17,9 @@ public class And extends FiltersList implements Filters {
     }
 
     @Override
-    public boolean matches(Game game) {
+    public boolean isMatching(Game game) {
         for (Filters filters : list) {
-            if(!filters.matches(game))
+            if(!filters.isMatching(game))
                 return false;
         }
         return true;

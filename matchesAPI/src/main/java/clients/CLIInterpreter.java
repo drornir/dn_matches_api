@@ -7,7 +7,6 @@ import filters.Filters;
  */
 public class CLIInterpreter implements Client {
 
-    @Override
     public Filters interpret(Object input) throws IllegalArgumentException {
         if (!(input instanceof String[])) {
             throw new IllegalArgumentException("Unsupported input for " + this.getClass() + ": expected String[], got " + input.getClass());
