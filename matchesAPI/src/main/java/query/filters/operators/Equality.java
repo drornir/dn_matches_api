@@ -8,9 +8,7 @@ import query.filters.Filter;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by Dror Nir on 25/05/2017.
- */
+
 public class Equality extends Filter {
 
     public Equality(GameField fieldName, GameValue value) {
@@ -20,7 +18,6 @@ public class Equality extends Filter {
 
     @Override
     public boolean isMatching(Game game) {
-        //TODO
         Set<Map.Entry<GameField, GameValue>> entries = game.getAll();
         for (Map.Entry<GameField, GameValue> entry : entries) {
             if (this.fieldName.equals(entry.getKey()) && this.value.equals(entry.getValue())) {
