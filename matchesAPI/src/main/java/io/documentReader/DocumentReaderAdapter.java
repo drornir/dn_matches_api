@@ -18,9 +18,9 @@ public class DocumentReaderAdapter implements DocumentReader {
     final Path sourcePath;
     final FileFormat fileFormat;
 
-    public DocumentReaderAdapter(Path sourcePath, FileFormat fileFormat) {
-        this.sourcePath = sourcePath;
+    public DocumentReaderAdapter(FileFormat fileFormat, Path sourcePath) {
         this.fileFormat = fileFormat;
+        this.sourcePath = sourcePath;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class DocumentReaderAdapter implements DocumentReader {
     }
 
     /**
-     * Adapter for http://opencsv.sourceforge.net
+     * Adapter section for converting http://opencsv.sourceforge.net
      */
     class CSVRowsIterator implements Iterator<Map<String, String>> {
         String[] headers;

@@ -1,34 +1,54 @@
 package data;
 
+import java.util.Map;
+
 /**
  * Created by Dror Nir on 25/05/2017.
  */
 public class GameValue {
-    final private String value;
+    final private Object value;
 
-    public GameValue(String value) {
-        assert value != null;
+    public GameValue(Object value) {
         this.value = value;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GameValue that = (GameValue) o;
-
-        return value.equals(that.value);
+    public GameValue(GameField field, String valueString) {
+        assert valueString != null;
+        switch (field) {
+            case HOME_TEAM:
+                value = handleTeam(valueString);
+                break;
+            case AWAY_TEAM:
+                value = handleTeam(valueString);
+                break;
+            case TOURNAMENT:
+                value = handleTournament(valueString);
+                break;
+            default:
+                value = defaultHandler(valueString);
+        }
     }
 
-    @Override
-    public int hashCode() {
-        return value.hashCode();
+    private String defaultHandler(String valueString) {
+        return valueString;
     }
 
-    @Override
-    public String toString() {
-        //noinspection RedundantStringToString
-        return value.toString();
+    private Team handleTeam(String valueString){
+        Map<String, Object> map = ClassPoolProvider.getInstance().get(Team.class);
+        Team team = (Team) map.get(valueString);
+        if(team == null){
+            team = new Team(valueString);
+            map.put(valueString,team);
+        }
+        return team;
+    }
+    private Tournament handleTournament(String valueString){
+        Map<String, Object> map = ClassPoolProvider.getInstance().get(Team.class);
+        Tournament tournament = (Tournament) map.get(valueString);
+        if(tournament == null){
+            tournament = new Tournament(valueString);
+            map.put(valueString,tournament);
+        }
+        return tournament;
     }
 }
