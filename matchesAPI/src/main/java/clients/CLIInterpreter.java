@@ -26,7 +26,6 @@ public class CLIInterpreter implements Client {
                 .longOpt("by")
                 .hasArg()
                 .argName("TYPE")
-                .required(true)
                 .type(String.class)
                 .desc("Get matches by TYPE. TYPE can be \"team\" or \"tournament\"")
                 .build()
@@ -36,7 +35,6 @@ public class CLIInterpreter implements Client {
                 .longOpt("name")
                 .hasArg()
                 .argName("NAME")
-                .required(true)
                 .type(String.class)
                 .desc("The name of the team or tournament")
                 .build()
@@ -46,7 +44,6 @@ public class CLIInterpreter implements Client {
                 .longOpt("status")
                 .hasArg()
                 .argName("STATUS")
-                .required(false)
                 .type(String.class)
                 .desc("Filter by match status. STATUS can be \"played\" or \"upcoming\"")
                 .build()
@@ -111,6 +108,6 @@ public class CLIInterpreter implements Client {
     }
 
     public void printHelp() {
-        new HelpFormatter().printHelp("", this.options);
+        new HelpFormatter().printHelp("matches-api", this.options);
     }
 }

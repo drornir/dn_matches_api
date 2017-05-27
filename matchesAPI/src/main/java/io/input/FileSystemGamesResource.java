@@ -25,7 +25,7 @@ public abstract class FileSystemGamesResource implements GamesResource {
     Path getFilepath() {
         assert filename != null;
         assert inputFormat != null;
-        return FileSystems.getDefault().getPath(directory, filename, ".", inputFormat);
+        return FileSystems.getDefault().getPath(directory, filename+ "."+ inputFormat);
     }
 
     FileFormat getInputFormatEnum() {
