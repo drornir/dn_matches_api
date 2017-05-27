@@ -1,9 +1,16 @@
 package data;
 
-/**
- * Created by Dror Nir on 27/05/2017.
- */
 public enum StatusOption {
-    UPCOMING,
-    PLAYED
+    UPCOMING("upcoming"),
+    PLAYED("played");
+
+    private final String str;
+
+    StatusOption(String s) {
+        this.str = s;
+    }
+
+    public String getName() {
+        return str;
+    }
 }

@@ -5,9 +5,7 @@ import data.*;
 
 import java.util.Map;
 
-/**
- * Created by Dror Nir on 26/05/2017.
- */
+
 public class UpcomingGames extends FileSystemGamesResource implements GamesResource {
     public UpcomingGames() {
         inputFormat = Config.get().getString("input.fs.format.upcoming");
@@ -17,7 +15,7 @@ public class UpcomingGames extends FileSystemGamesResource implements GamesResou
     @Override
     Game convertRowToGame(Map<String, String> row) {
         Game game = new KeyValueGame(row);
-        game.add(GameField.STATUS,new GameValue(StatusOption.UPCOMING));
+        game.add(GameField.STATUS,new GameValue(StatusOption.UPCOMING.getName()));
         return game;
     }
 }

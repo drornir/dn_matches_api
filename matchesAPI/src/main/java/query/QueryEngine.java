@@ -7,9 +7,6 @@ import query.filters.Filters;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/**
- * Created by Dror Nir on 25/05/2017.
- */
 public class QueryEngine {
     private static QueryEngine engine = new QueryEngine();
 
@@ -50,7 +47,13 @@ public class QueryEngine {
             @Override
             public Game next() {
                 if (hasNext()) {
-                    return game;
+                    Game _game = game;
+                    if(games.hasNext()){
+                        game = games.next();
+                    } else {
+                        game = null;
+                    }
+                    return _game;
                 }
                 throw new NoSuchElementException();
             }

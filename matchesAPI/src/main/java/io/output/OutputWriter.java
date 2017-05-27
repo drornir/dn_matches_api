@@ -5,9 +5,7 @@ import config.Config;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
-/**
- * Created by Dror Nir on 27/05/2017.
- */
+
 public class OutputWriter {
     private static OutputWriter ourInstance = new OutputWriter();
     private final OutputStream defaultOutputStream;
@@ -35,5 +33,6 @@ public class OutputWriter {
         assert outputStream != null;
         PrintWriter writer = new PrintWriter(outputStream);
         writer.write(outputString);
+        writer.flush();
     }
 }

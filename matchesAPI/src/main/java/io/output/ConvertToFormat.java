@@ -1,18 +1,15 @@
 package io.output;
 
-import com.google.gson.Gson;
 import config.Config;
 import data.*;
 import io.FileFormat;
 
+import javax.json.*;
 import java.util.*;
 
-/**
- * Created by Dror Nir on 27/05/2017.
- */
+
 public class ConvertToFormat {
     private static ConvertToFormat ourInstance = new ConvertToFormat();
-    private static Gson gson = new Gson();
     private final FileFormat defaultFormat;
 
     public static ConvertToFormat getInstance() {
@@ -43,55 +40,51 @@ public class ConvertToFormat {
         while(games.hasNext()){
             gamesList.add(games.next());
         }
-        return convert((Game[]) gamesList.toArray(),format);
+        Game[] gamesArray = gamesList.toArray(new Game[0]);
+        return convert(gamesArray,format);
     }
     public String convert(Game[] games, FileFormat format) {
         switch (format) {
             case JSON:
-                return toJson(games);
+                return toJson(games).toString();
             default:
                 throw new Error("Unsupported format " + format);
         }
     }
 
-    private String toJson(Game[] games) {
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < games.length; i++) {
-            Game game = games[i];
-            String gameOut = toJson(game);
-            result.add(gameOut);
+    private JsonArray toJson(Game[] games) {
+        JsonArrayBuilder builder = Json.createArrayBuilder();
+        for (Game game : games) {
+            JsonObject gameJson = toJson(game);
+            builder.add(gameJson);
         }
-        return gson.toJson(result);
+        return builder.build();
     }
 
-    private String toJson(Game game) {
-        Map<String, String> result = new HashMap<>();
+    private JsonObject toJson(Game game) {
+        JsonObjectBuilder builder = Json.createObjectBuilder();
         for (Map.Entry<GameField, GameValue> dataEntry : game.getAll()) {
             GameField field = dataEntry.getKey();
             Object value = dataEntry.getValue().getValue();
-            String fieldOut, valueOut;
             if (field.equals(GameField.STATUS)) {
-                fieldOut = "status";//TODO generify
-                valueOut = (String) value;
+                builder.add("status",(String) value);
             } else if (field.equals(GameField.HOME_TEAM) || field.equals(GameField.AWAY_TEAM) || field.equals(GameField.TOURNAMENT)) {
                 FootballEntity footballEntity = (FootballEntity) value;
-                fieldOut = field.getFieldNameInData();
-                valueOut = toJson(footballEntity);
-//            } else if (field.equals(GameField.TOURNAMENT)) {
-//                Tournament tournament = (Tournament) value;
-//                fieldOut = field.getFieldNameInData();
-//                valueOut = toJson(tournament);
+                builder.add(field.getFieldNameInData(),toJson(footballEntity));
             } else {
-                fieldOut = field.getFieldNameInData();
-                valueOut = (String) value;
+                builder.add(field.getFieldNameInData(),(String) value);
             }
-            result.put(fieldOut,valueOut);
         }
-        return gson.toJson(result);
+        return builder.build();
     }
 
-    private String toJson(FootballEntity footballEntity) {
-        return gson.toJson(footballEntity);
+    private JsonObject toJson(FootballEntity footballEntity) {
+        JsonObjectBuilder builder = Json.createObjectBuilder();
+        String name = footballEntity.getName();
+        int id = footballEntity.getId();
+        builder.add("name", name);
+        builder.add("id", id);
+        return builder.build();
     }
 
 

@@ -27,6 +27,8 @@ public class Main {
             exit(1);
         }
         assert games != null;
-        OutputWriter.getInstance().write(ConvertToFormat.getInstance().convert(games));
+        String textual = ConvertToFormat.getInstance().convert(games);
+        OutputWriter.getInstance().write(textual);
+        System.out.println();//for cmd clarity.. 
     }
 }
