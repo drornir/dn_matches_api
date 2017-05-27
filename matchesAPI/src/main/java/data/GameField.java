@@ -6,16 +6,16 @@ import config.Config;
  * Created by Dror Nir on 25/05/2017.
  */
 public enum GameField {
-    HOME_TEAM("fs.input.fieldName.homeTeam"),
-    AWAY_TEAM("fs.input.fieldName.awayTeam"),
-    TOURNAMENT("fs.input.fieldName.tournament"),
-    START_TIME("fs.input.fieldName.startTime"),
+    HOME_TEAM("input.fs.fieldName.homeTeam"),
+    AWAY_TEAM("input.fs.fieldName.awayTeam"),
+    TOURNAMENT("input.fs.fieldName.tournament"),
+    START_TIME("input.fs.fieldName.startTime"),
     STATUS(null),
     //played
-    HOME_SCORE("fs.input.fieldName.homeScore"),
-    AWAY_SCORE("fs.input.fieldName.awayScore"),
+    HOME_SCORE("input.fs.fieldName.homeScore"),
+    AWAY_SCORE("input.fs.fieldName.awayScore"),
     //upcoming
-    KICKOFF("fs.input.fieldName.kickoff");
+    KICKOFF("input.fs.fieldName.kickoff");
 
     private final String fieldNameInData;
 

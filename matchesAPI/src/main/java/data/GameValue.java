@@ -51,4 +51,8 @@ public class GameValue {
         }
         return tournament;
     }
+
+    public Object getValue() {
+        return value;
+    }
 }

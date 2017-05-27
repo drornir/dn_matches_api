@@ -1,10 +1,10 @@
-package io;
+package io.input;
 
 import config.Config;
 import data.Game;
-import io.documentReader.DocumentReaderAdapter;
+import io.FileFormat;
+import io.input.documentReader.DocumentReaderAdapter;
 
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ public abstract class FileSystemGamesResource implements GamesResource {
     String filename;
 
     public FileSystemGamesResource() {
-        directory = Config.get().getString("fs.input.resourcesdir");
+        directory = Config.get().getString("input.fs.resourcesdir");
     }
 
     Path getFilepath() {

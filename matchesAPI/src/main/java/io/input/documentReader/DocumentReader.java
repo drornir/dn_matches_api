@@ -1,4 +1,4 @@
-package io.documentReader;
+package io.input.documentReader;
 
 import java.util.Iterator;
 import java.util.Map;

@@ -1,11 +1,10 @@
-package filters.operators;
+package query.filters.operators;
 
 import data.Game;
 import data.GameField;
 import data.GameValue;
-import filters.Filter;
+import query.filters.Filter;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 

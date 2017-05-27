@@ -10,5 +10,4 @@ public class Team extends FootballEntity{
         id = IdFactory.getInstance().getAndIncrement(Team.class);
     }
 
-
 }

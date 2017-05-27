@@ -1,8 +1,8 @@
-package filters.operators;
+package query.filters.operators;
 
 import data.Game;
-import filters.Filters;
-import filters.FiltersList;
+import query.filters.Filters;
+import query.filters.FiltersList;
 
 import java.util.List;
 

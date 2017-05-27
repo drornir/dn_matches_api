@@ -11,10 +11,6 @@ import java.util.Set;
 public class KeyValueGame implements Game {
     private Map<GameField, GameValue> gameData = new HashMap<>();
 
-    public KeyValueGame() {
-
-    }
-
     public KeyValueGame(Map<String, String> fromRow) {
         //for each tuple in row, find a fieldEnum and add as tuple of Game.
         for (Map.Entry<String, String> entry : fromRow.entrySet()) {
@@ -40,6 +36,19 @@ public class KeyValueGame implements Game {
     public void add(GameField field, GameValue value) {
         gameData.put(field, value);
     }
+/*//TODO delete this
+    @Override
+    public Map<String, String> toStringsMap() {
+        Map<String, String> result = new HashMap<>();
+        for (Map.Entry<GameField, GameValue> dataEntry : gameData.entrySet()) {
+            if (dataEntry.getKey().equals(GameField.STATUS)) {
+                result.put("status", (String) dataEntry.getValue().getValue());
+            } else if (dataEntry.getKey().equals(GameField.HOME_TEAM) || dataEntry.getKey().equals(GameField.AWAY_TEAM)) {
+                Team team = (Team) dataEntry.getValue().getValue();
+                result.put(dataEntry.getKey().getFieldNameInData(),)
+            }
+        }
+    }*/
 
     public void addAll(HashMap<GameField, GameValue> fromMap) {
         gameData.putAll(fromMap);

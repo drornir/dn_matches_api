@@ -1,6 +1,6 @@
 package clients;
 
-import filters.Filters;
+import query.filters.Filters;
 
 /**
  * Created by Dror Nir on 25/05/2017.

@@ -1,9 +1,9 @@
 package data;
 
-import filters.Filters;
-import io.GamesResource;
-import io.PlayedGames;
-import io.UpcomingGames;
+import query.filters.Filters;
+import io.input.GamesResource;
+import io.input.PlayedGames;
+import io.input.UpcomingGames;
 import util.IteratorOfIterators;
 
 import java.util.*;
@@ -22,7 +22,7 @@ public class Data {
         //TODO
     }
 
-    public Iterator<Game> getGames() {
+    public Iterator<Game> getGames() throws Exception {
         return getGames(null);
     }
 
@@ -33,7 +33,7 @@ public class Data {
      * @param filters
      * @return Iterator of relevant Rows
      */
-    public Iterator<Game> getGames(@SuppressWarnings("unused") Filters filters) {
+    public Iterator<Game> getGames(@SuppressWarnings("unused") Filters filters) throws Exception {
         List<GamesResource> listDefinition = Arrays.asList(// optimize this
                 new PlayedGames(),
                 new UpcomingGames());

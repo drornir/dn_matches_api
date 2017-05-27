@@ -1,4 +1,4 @@
-package io.documentReader;
+package io.input.documentReader;
 
 import com.opencsv.CSVReader;
 import io.FileFormat;

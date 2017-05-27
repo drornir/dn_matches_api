@@ -1,4 +1,4 @@
-package filters;
+package query.filters;
 
 import data.GameField;
 import data.GameValue;

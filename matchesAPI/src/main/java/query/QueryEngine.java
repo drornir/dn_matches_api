@@ -2,7 +2,7 @@ package query;
 
 import data.Data;
 import data.Game;
-import filters.Filters;
+import query.filters.Filters;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -20,7 +20,7 @@ public class QueryEngine {
     private QueryEngine() {
     }
 
-    public Iterator<Game> query(Filters filters) {
+    public Iterator<Game> query(Filters filters) throws Exception {
         Iterator<Game> games = Data.getInstance().getGames(filters);
         final Game firstGame;
         if (games.hasNext()) {
@@ -54,8 +54,6 @@ public class QueryEngine {
                 }
                 throw new NoSuchElementException();
             }
-        }
-
-                ;
+        };
     }
 }
